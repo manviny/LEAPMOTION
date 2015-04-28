@@ -1,36 +1,69 @@
 
+<div class="row">
+
+	<div class="col-xs-4">
+	
+	    <h1>Frame data</h1>
+		
+		<p>Direccion : {{direccion}}</p>
+
+		<p>id: {{frame.id}}</p>
+		<p>tiempo: {{frame.timestamp}}</p>
+		<p>número de manos: {{frame.hands}}</p>
+		<p>dedos: {{frame.fingers}}</p>
+		<p>herramientas: {{frame.tools}}</p>
+		<p>movimientos: {{frame.gestures}}</p>
+	    <p>translation: {{frameTranslation}}</p>
+		<p>rotationAxis: {{frameRotationAxis}}</p>
+		<p>rotationAngle: {{frameRotationAngle}}</p>
+		<p>scaleFactor: {{frameScaleFactor}}</p>	
+
+	</div>
+
+	<div class="col-xs-4">
+
+	    <h1>Hand data</h1>
+
+		<p>id : {{hand.id}}</p>
+		<p>type : {{hand.type}}</p>
+		<p>direction : {{hand.direction}}</p>
+		<p>palmPosition: {{hand.palmPosition}}</p>
+		<p>Grab strength: {{hand.grabStrength}}</p>
+		<p>Pinch strength: {{hand.pinchStrength}}</p>
+		<p>confianza: {{hand.confidence}}</p>
+		<p>direccion brazo: {{arm.direction}}</p>
+		<p>centro brazo: {{arm.center}}</p>
+		<p>brazo arriba: {{arm.vector}}</p>
 
 
-    <h1>Frame data</h1>
+		<p>translation: {{handTranslation}}</p>
+		<p>rotationAxis: {{handRotationAxis}}</p>
+		<p>rotationAngle: {{handRotationAngle}}</p>
+		<p>scaleFactor: {{handScaleFactor}}</p>	
+	
 
-	<p>id: {{frame.id}}</p>
-	<p>tiempo: {{frame.timestamp}}</p>
-	<p>número de manos: {{frame.hands}}</p>
-	<p>dedos: {{frame.fingers}}</p>
-	<p>herramientas: {{frame.tools}}</p>
-	<p>movimientos: {{frame.gestures}}</p>
-    <p>translation: {{frameTranslation}}</p>
-	<p>rotationAxis: {{frameRotationAxis}}</p>
-	<p>rotationAngle: {{frameRotationAngle}}</p>
-	<p>scaleFactor: {{frameScaleFactor}}</p>
+	</div>
+
+	<div class="col-xs-4">
+
+	    <h1>Gesture data</h1>
+
+		<p>id : {{gesture.id}}</p>
+		<p>type : {{gesture.type}}</p>
+		<p>state : {{gesture.state}}</p>
+		<p>handIds: {{gesture.handIds}}</p>
+		<p>pointableIds: {{gesture.pointableIds}}</p>
+		<p>duration: {{gesture.duration}}</p>
+		<p>position: {{gesture.position}}</p>
+	
+		<div>{{gestureInfo}}</div>
+	
+
+	</div>
+
+</div>
 
 
-    <h1>Hand data</h1>
-
-	<p>id : {{hand.id}}</p>
-	<p>type : {{hand.type}}</p>
-	<p>direction : {{hand.direction}}</p>
-	<p>palmPosition: {{hand.palmPosition}}</p>
-	<p>Grab strength: {{hand.grabStrength}}</p>
-	<p>Pinch strength: {{hand.pinchStrength}}</p>
-	<p>confianza: {{hand.confidence}}</p>
-	<p>direccion brazo: {{arm.direction}}</p>
-	<p>centro brazo: {{arm.center}}</p>
-	<p>brazo arriba: {{arm.vector}}</p>
 
 
-	<p>translation: {{handTranslation}}</p>
-	<p>rotationAxis: {{handRotationAxis}}</p>
-	<p>rotationAngle: {{handRotationAngle}}</p>
-	<p>scaleFactor: {{handScaleFactor}}</p>
 
