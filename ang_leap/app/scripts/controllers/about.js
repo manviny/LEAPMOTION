@@ -33,6 +33,8 @@ angular.module('angLeapApp')
 	$scope.frame.gestures = {};
 
 	$scope.hand = {};
+	$scope.arm = {};
+	// $scope.hand.direction = {};
 
 
 	Leap.loop(controllerOptions, function(frame) {
@@ -70,6 +72,24 @@ angular.module('angLeapApp')
 		    for (var i = 0; i < frame.hands.length; i++) {
 		      var hand = frame.hands[i];
 		      $scope.hand.id = hand.id;
+		      $scope.hand.type = hand.type;
+		      $scope.hand.direction = vectorToString(hand.direction, 2);
+		      $scope.hand.palmPosition = vectorToString(hand.palmPosition);
+		      $scope.hand.grabStrength = hand.grabStrength;
+		      $scope.hand.pinchStrength = hand.pinchStrength;
+		      $scope.hand.confidence = hand.confidence;
+		      $scope.arm.direction = vectorToString(hand.arm.direction());
+		      $scope.arm.center = vectorToString(hand.arm.center());
+		      $scope.arm.vector = vectorToString(hand.arm.basis[1]);
+
+
+
+
+
+      // handString += "Confidence: " + hand.confidence + "<br />";
+      // handString += "Arm direction: " + vectorToString(hand.arm.direction()) + "<br />";
+      // handString += "Arm center: " + vectorToString(hand.arm.center()) + "<br />";
+      // handString += "Arm up vector: " + vectorToString(hand.arm.basis[1]) + "<br />";
 
 
 			// Hand motion factors
