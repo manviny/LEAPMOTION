@@ -1,3 +1,11 @@
+<div class="row">
+	<h1>movimiento: {{movimiento}}</h1>	
+	<input type="number" ng-model="sensibilidadAccion" >
+	<h1>accion: {{accionX}}</h1>	
+	<h1>accion: {{accionY}}</h1>	
+	<h1>accionPlus: {{pellizco}} {{agarrar}}</h1>	
+
+</div>
 
 <div class="row">
 
@@ -5,7 +13,8 @@
 	
 	    <h1>Frame data</h1>
 		
-		<p>Direccion : {{direccion}}</p>
+		<input type="number" ng-model="sensibilidadSentido" >
+		<strong>Direccion : {{direccion}}</strong>
 
 		<p>id: {{frame.id}}</p>
 		<p>tiempo: {{frame.timestamp}}</p>

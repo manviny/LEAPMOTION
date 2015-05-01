@@ -19,6 +19,9 @@ angular.module('angLeapApp')
 	var paused = false;
 	var pauseOnGesture = false;
 
+	$scope.sensibilidadSentido = 4;
+	$scope.sensibilidadAccion = 70;
+
 	// Setup Leap loop with frame callback function
 	var controllerOptions = {enableGestures: true};
 
@@ -76,6 +79,10 @@ angular.module('angLeapApp')
 		    for (var i = 0; i < frame.hands.length; i++) {
 
 				var hand = frame.hands[i];
+
+		    	$scope.pellizco = hand.pinchStrength==1 ? 'pellizco' :  '';
+		    	$scope.agarrar = hand.grabStrength==1 ? 'agarrar' :  '';
+
 				$scope.hand.id = hand.id;
 				$scope.hand.type = hand.type;
 				$scope.hand.direction = vectorToString(hand.direction, 2);
@@ -87,20 +94,26 @@ angular.module('angLeapApp')
 				$scope.arm.center = vectorToString(hand.arm.center());
 				$scope.arm.vector = vectorToString(hand.arm.basis[1]);
 
+				// if(hand.grabStrength==1 && hand.type=='left') alert("izquierda")
+				// if(hand.grabStrength==1 && hand.type=='right') alert("derecha")
+
 				// Hand motion factors
 				if (previousFrame && previousFrame.valid) {
 				    var translation = hand.translation(previousFrame);
 				    var rotationAxis = hand.rotationAxis(previousFrame);
 				    var rotationAngle = hand.rotationAngle(previousFrame);
 				    var scaleFactor = hand.scaleFactor(previousFrame);
-				    var sensibilidad = 25;
+				    
 				     $scope.$apply(function () {
-			        	if(translation[0] < -sensibilidad) { $scope.direccion = {'x':'izquierda'} ; } 
-			        	else if (translation[0] > sensibilidad){ $scope.direccion = {'x':'derecha'} ; }
-			        	if(translation[1] < -sensibilidad) { $scope.direccion = {'z':'abajo'} ; } 
-			        	else if (translation[1] > sensibilidad){ $scope.direccion = {'z':'arriba'} ; }
-			        	if(translation[2] < -sensibilidad) { $scope.direccion = {'y':'adelante'} ; } 
-			        	else if (translation[2] > sensibilidad){ $scope.direccion = {'y':'atras'} ; }
+				     	if(hand.palmPosition[0]>$scope.sensibilidadAccion) $scope.accionX = "derecha"
+				     	if(hand.palmPosition[0]<-$scope.sensibilidadAccion) $scope.accionX = "izquierda"
+
+			        	if(translation[0] < -$scope.sensibilidadSentido) { $scope.direccion = {'sentido':'izquierda'} ; } 
+			        	else if (translation[0] > $scope.sensibilidadSentido){ $scope.direccion = {'sentido':'derecha'} ; }
+			        	if(translation[1] < -$scope.sensibilidadSentido) { $scope.direccion = {'sentido':'abajo'} ; } 
+			        	else if (translation[1] > $scope.sensibilidadSentido){ $scope.direccion = {'sentido':'arriba'} ; }
+			        	if(translation[2] < -$scope.sensibilidadSentido) { $scope.direccion = {'sentido':'adelante'} ; } 
+			        	else if (translation[2] > $scope.sensibilidadSentido){ $scope.direccion = {'sentido':'atras'} ; }
 				     });
 				    $scope.$apply(function () {
 				    	$scope.handTranslation = vectorToString(translation); //mm.
@@ -132,6 +145,7 @@ angular.module('angLeapApp')
 			                    + "progress: " + gesture.progress.toFixed(2) + " rotations";
 			      break;
 			    case "swipe":
+			    	$scope.movimiento = 'swipe ' + $scope.direccion.sentido;
 			      gestureString += "start position: " + vectorToString(gesture.startPosition) + " mm, "
 			                    + "current position: " + vectorToString(gesture.position) + " mm, "
 			                    + "direction: " + vectorToString(gesture.direction, 1) + ", "
