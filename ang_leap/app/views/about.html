@@ -13,8 +13,14 @@
 	
 	    <h1>Frame data</h1>
 		
-		<input type="number" ng-model="sensibilidadSentido" >
-		<strong>Direccion : {{direccion}}</strong>
+		X<input type="number" ng-model="sensibilidadSentidoX" ><br>
+		Y<input type="number" ng-model="sensibilidadSentidoY" ><br>
+		Z<input type="number" ng-model="sensibilidadSentidoZ" ><br>
+		<strong>Direccion : {{direccion.sentido}}</strong>
+		<br>
+		<strong>Veces : {{veces}}</strong>
+		<br>
+		<strong>preparado : {{preparado}}</strong>
 
 		<p>id: {{frame.id}}</p>
 		<p>tiempo: {{frame.timestamp}}</p>

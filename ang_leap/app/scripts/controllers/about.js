@@ -19,8 +19,11 @@ angular.module('angLeapApp')
 	var paused = false;
 	var pauseOnGesture = false;
 
-	$scope.sensibilidadSentido = 4;
+	$scope.sensibilidadSentidoX = 4;
+	$scope.sensibilidadSentidoY = 4;
+	$scope.sensibilidadSentidoZ = 4;
 	$scope.sensibilidadAccion = 70;
+	$scope.veces = 0;
 
 	// Setup Leap loop with frame callback function
 	var controllerOptions = {enableGestures: true};
@@ -108,12 +111,53 @@ angular.module('angLeapApp')
 				     	if(hand.palmPosition[0]>$scope.sensibilidadAccion) $scope.accionX = "derecha"
 				     	if(hand.palmPosition[0]<-$scope.sensibilidadAccion) $scope.accionX = "izquierda"
 
-			        	if(translation[0] < -$scope.sensibilidadSentido) { $scope.direccion = {'sentido':'izquierda'} ; } 
-			        	else if (translation[0] > $scope.sensibilidadSentido){ $scope.direccion = {'sentido':'derecha'} ; }
-			        	if(translation[1] < -$scope.sensibilidadSentido) { $scope.direccion = {'sentido':'abajo'} ; } 
-			        	else if (translation[1] > $scope.sensibilidadSentido){ $scope.direccion = {'sentido':'arriba'} ; }
-			        	if(translation[2] < -$scope.sensibilidadSentido) { $scope.direccion = {'sentido':'adelante'} ; } 
-			        	else if (translation[2] > $scope.sensibilidadSentido){ $scope.direccion = {'sentido':'atras'} ; }
+			
+
+			        	if(translation[0] < -$scope.sensibilidadSentidoX) { 
+			        		if($scope.frameAnterior=='izquierda') {$scope.veces++;} 
+			        		else {$scope.veces=0};
+			        		$scope.direccion = {'sentido':'izquierda'} ; 
+			        	} 
+			        	else if (translation[0] > $scope.sensibilidadSentidoX){ 
+			        		if($scope.frameAnterior=='derecha') {$scope.veces++;} 
+			        		else {$scope.veces=0};
+			        		$scope.direccion = {'sentido':'derecha'} ; 
+			        	}
+			        	if(translation[1] < -$scope.sensibilidadSentidoZ) { 
+			        		if($scope.frameAnterior=='abajo') {$scope.veces++;} 
+			        		else {$scope.veces=0};
+			        		$scope.direccion = {'sentido':'abajo'} ; 
+			        	} 
+			        	else if (translation[1] > $scope.sensibilidadSentidoZ){ 
+			        		if($scope.frameAnterior=='arriba') {$scope.veces++;} 
+			        		else {$scope.veces=0};
+			        		$scope.direccion = {'sentido':'arriba'} ; 
+			        	}
+			        	if(translation[2] < -$scope.sensibilidadSentidoY) { 
+			        		if($scope.frameAnterior=='adelante') {$scope.veces++;} 
+			        		else {$scope.veces=0};
+			        		$scope.direccion = {'sentido':'adelante'} ; 
+			        	} 
+			        	else if (translation[2] > $scope.sensibilidadSentidoY){ 
+			        		if($scope.frameAnterior=='atras') {$scope.veces++;} 
+			        		else {$scope.veces=0};
+			        		$scope.direccion = {'sentido':'atras'} ; 
+			        	}
+				     	
+				     	console.log($scope.direccion.sentido);
+
+				     	// 1 segundo
+				     	var tiempo = $scope.frame.timestamp - $scope.timeAnterior;
+				     	if(tiempo > 1000000) {
+				     		console.debug("preparado",tiempo); 
+				     		$scope.preparado=true
+				     	}
+
+				     	
+				     	// graba frame anterior
+				     	$scope.timeAnterior = $scope.frame.timestamp;
+				     	$scope.frameAnterior = $scope.direccion.sentido;
+
 				     });
 				    $scope.$apply(function () {
 				    	$scope.handTranslation = vectorToString(translation); //mm.
