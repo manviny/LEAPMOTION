@@ -22,7 +22,9 @@ angular.module('angLeapApp')
 	$scope.sensibilidadSentidoX = 4;
 	$scope.sensibilidadSentidoY = 4;
 	$scope.sensibilidadSentidoZ = 4;
-	$scope.sensibilidadAccion = 70;
+	$scope.sensibilidadAccionX = 90;
+	$scope.sensibilidadAccionZ = 80;
+	$scope.sensibilidadAccionY = 80;
 	$scope.veces = 0;
 
 	// Setup Leap loop with frame callback function
@@ -108,9 +110,25 @@ angular.module('angLeapApp')
 				    var scaleFactor = hand.scaleFactor(previousFrame);
 				    
 				     $scope.$apply(function () {
-				     	if(hand.palmPosition[0]>$scope.sensibilidadAccion) $scope.accionX = "derecha"
-				     	if(hand.palmPosition[0]<-$scope.sensibilidadAccion) $scope.accionX = "izquierda"
 
+				     	// limpia movimientos
+						$scope.palmX = ''; $scope.palmZ = ''; $scope.palmY = ''; 
+						$scope.accionX = ''; $scope.accionZ = ''; $scope.accionY = '';
+
+						//Detecta movimientos
+				     	if(hand.palmPosition[0]>$scope.sensibilidadAccionX) $scope.accionX = "derecha"
+				     	if(hand.palmPosition[0]<-$scope.sensibilidadAccionX) $scope.accionX = "izquierda"
+
+				     	if(hand.palmPosition[1]>$scope.sensibilidadAccionZ) $scope.accionZ = "arriba"
+				     	if(hand.palmPosition[1]<$scope.sensibilidadAccionZ) $scope.accionZ = "abajo"
+
+				     	if(hand.palmPosition[2]>$scope.sensibilidadAccionY) $scope.accionY = "atras"
+				     	if(hand.palmPosition[2]<$scope.sensibilidadAccionY) $scope.accionY = "adelante"
+
+				     	// Detecta posicion de los movimientos
+				     	$scope.palmX = (hand.palmPosition[0]/10).toFixed(0);
+				     	$scope.palmZ = (hand.palmPosition[1]/10).toFixed(0);
+				     	$scope.palmY = (hand.palmPosition[2]/10).toFixed(0);
 			
 
 			        	if(translation[0] < -$scope.sensibilidadSentidoX) { 
