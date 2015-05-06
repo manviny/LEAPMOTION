@@ -1,0 +1,76 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+@import url(http://fonts.googleapis.com/css?family=Arvo:700);
+
+
+body{
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Arvo', serif;
+    color: #34495e;
+}
+
+h1.app-title{
+    text-align: center;
+    font-size: 3em;
+}
+.logs, .gestures{
+    display: inline-block;
+    height: 300px;
+    overflow: scroll;
+    width: 46%;
+    margin: 10px;
+    border-radius: 4px;
+    text-align: left;
+    background: rgb(240,240,240);
+}
+
+.logs h3, .gestures h3{
+    width: 100%;
+    text-align: center;
+    background: #1abc9c;
+    padding: 1em 0;
+    margin: 0 0 1em 0;
+}
+
+.page-wrapper{
+    width: 960px;
+    margin: 0 auto;
+}
+
+.leaplogs{
+    text-align: center;
+}
+
+.gestures li{
+    margin-bottom: 10px;
+}
+
+.connected, .not-connected{
+    margin: 4em 0;
+}
+
+.connected > h2{
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-size: 2.5em;
+    font-weight: 300;
+    color: #2ecc71;
+    border: 2px solid #2ecc71;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.not-connected h2{
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-size: 2.5em;
+    font-weight: 300;
+    color: #e74c3c;
+    border: 2px solid #e74c3c;
+    padding: 5px;
+    border-radius: 6px;
+}

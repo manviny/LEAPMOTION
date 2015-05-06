@@ -1,0 +1,69 @@
+<div id="pie-menu-d3" ng-controller="PieMenuCtrl">
+
+    <div id="experiment-content" ng-click="onMouseClick($event)">
+
+        <div class="tree">
+            <ul>
+                <li>
+                    <div pie-menu-data="pieMenuModel.data1"></div>
+                    <ul>
+                        <li>
+                            <div pie-menu-data="pieMenuModel.data1"></div>
+                        <ul>
+                            <li>
+                                <div pie-menu-data="pieMenuModel.data1"></div>
+                            </li>
+                            <li>
+                                <div pie-menu-data="pieMenuModel.data2"></div>
+                            </li>
+                            <li>
+                                <div pie-menu-data="pieMenuModel.data3"></div>
+                            </li>
+                        </ul>
+                        </li>
+                        <li>
+                            <div pie-menu-data="pieMenuModel.data1"></div>
+                            <ul>
+                                <li>
+                                    <div pie-menu-data="pieMenuModel.data1"></div>
+                                </li>
+                                <li>
+                                    <div pie-menu-data="pieMenuModel.data1"></div>
+                                    <ul>
+                                        <li>
+                                            <div pie-menu-data="pieMenuModel.data1"></div>
+                                        </li>
+                                        <li>
+                                            <div pie-menu-data="pieMenuModel.data1"></div>
+                                        </li>
+                                        <li>
+                                            <div pie-menu-data="pieMenuModel.data1"></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div pie-menu-data="pieMenuModel.data1"></div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
+        <!--<link rel="stylesheet" href="/experiment/pie-menu-d3/stylesheets/screen.css"/>-->
+        <!--<script src="/libs/d3.v2.js"></script>-->
+        <!--<script src="/experiment/pie-menu-d3/js/app.js"></script>-->
+        <!--<script src="/experiment/pie-menu-d3/js/services.js"></script>-->
+        <!--<script src="/experiment/pie-menu-d3/js/controllers.js"></script>-->
+        <!--<script src="/experiment/pie-menu-d3/js/filters.js"></script>-->
+        <!--<script src="/experiment/pie-menu-d3/js/directives.js"></script>-->
+        <script>
+            angular.element(document).ready(function () {
+                angular.bootstrap('#pie-menu-d3', ['pie-menu-d3']);
+            });
+        </script>
+    </div>
+</div>
+

@@ -1,0 +1,14 @@
+<div class="element" ng-class="isExpEnabled(item)" >
+    <div class="cross-tl">+</div>
+    <div class="cross-tr">+</div>
+    <div class="cross-bl">+</div>
+    <div class="cross-br">+</div>
+    <a ng-click="onExperimentClick(item)" hm-tap="onExperimentClick(item)">
+
+    <img ng-src="{{getTileImgSrc(item)}}"/>
+    <!--<div class="number">{{$index}}</div>-->
+    <!--<div class="symbol">{{item.symbol}}</div>-->
+    <div class="details">{{item.name}}</div>
+    <!--<div class="details">{{item.idx}}</div>-->
+    </a>
+</div>

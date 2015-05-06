@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html id="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/stylesheets/screen.css"/>
+    <title>Dewmap</title>
+</head>
+<body>
+<div ng-controller="AppCtrl" id="main-content">
+    <div class="logo-wrap">
+        <div class="logo-center">
+            <img src="/assets/img/logo-100.png"/>
+        </div>
+    </div>
+    <div id="content-wrap" ng-click="destroy()">
+        <ng-view id="view-loader"></ng-view>
+        <img src="/assets/img/interface.png" id="interface-img"/>
+
+        <div id="preloader" class="well" ng-show="appModel.currentItem">
+            <div class="progress progress-striped active">
+                <div class="bar"></div>
+            </div>
+        </div>
+
+
+        <div class="controls-wrap" ng-show="appModel.currentItem">
+            <!--<p class="comp-title">{{appModel.currentItem.name}}</p>-->
+
+            <div class="info-wrap">
+                <div class="controls-info">
+                    <a href="{{appModel.currentItem.info}}" target="_blank">
+                        <img src="/assets/img/info.png"/>
+                    </a>
+                </div>
+            </div>
+
+
+            <a hm-tap="onPrevious(appModel.currentItem)">
+                <img src="/assets/img/left-arrow.png" class="controls-left" ng-class="hasPrevious(appModel.currentItem)"/>
+            </a>
+            <a hm-tap="onNext(appModel.currentItem)">
+                <img src="/assets/img/right-arrow.png" class="controls-right" ng-class="hasNext(appModel.currentItem)"/>
+            </a>
+            <div class="controls-center">
+                <a hm-tap="onBack()">
+                    <img src="/assets/img/down-arrow.png"/>
+                </a>
+            </div>
+        </div>
+
+        <div class="layout-controls-wrap" ng-show="!appModel.currentItem">
+            <a hm-tap="onSphere()">
+                <img src="/assets/img/sphere.png" class="controls-left"
+                     ng-class="{controlsactive: appModel.isControlActive('sphere')}"/>
+            </a>
+
+            <a hm-tap="onGrid()">
+                <img src="/assets/img/grid.png" class="controls-right"
+                     ng-class="{controlsactive: appModel.isControlActive('grid')}"/>
+            </a>
+            <div class="controls-center">
+                <a hm-tap="onDisk()">
+                    <img src="/assets/img/disk.png"
+                         ng-class="{controlsactive: appModel.isControlActive('disk')}"/>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36896737-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+
+
+
+
+
+<script src="/libs/jquery-1.9.0.js"></script>
+<script src="/libs/three/three.js"></script>
+<script src="/libs/three/tween.js"></script>
+<script src="/libs/three/TrackballControls.js"></script>
+<script src="/libs/three/CSS3DRenderer.js"></script>
+<script src="/libs/hammer/hammer.js"></script>
+<script src="/libs/bootstrap/js/bootstrap.js"></script>
+<script src="/libs/angular-1.0.2/angular.js"></script>
+<script src="/js/Detector.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/services.js"></script>
+<script src="/js/controllers.js"></script>
+<script src="/js/filters.js"></script>
+<script src="/js/directives.js"></script>
+
+<!--world-connections-->
+<!--<link rel="stylesheet" href="/experiment/world-connections/stylesheets/screen.css"/>-->
+<!--<script src="/experiment/world-connections/js/app.js"></script>-->
+<!--<script src="/experiment/world-connections/js/services.js"></script>-->
+<!--<script src="/experiment/world-connections/js/controllers.js"></script>-->
+<!--<script src="/experiment/world-connections/js/filters.js"></script>-->
+<!--<script src="/experiment/world-connections/js/directives.js"></script>-->
+
+<!--abstract-tech-01-->
+<!--<link rel="stylesheet" href="/experiment/abstract-tech-01/stylesheets/screen.css"/>-->
+<!--<script src="/experiment/abstract-tech-01/js/app.js"></script>-->
+<!--<script src="/experiment/abstract-tech-01/js/services.js"></script>-->
+<!--<script src="/experiment/abstract-tech-01/js/controllers.js"></script>-->
+<!--<script src="/experiment/abstract-tech-01/js/filters.js"></script>-->
+<!--<script src="/experiment/abstract-tech-01/js/directives.js"></script>-->
+
+<!--Experiment 3-->
+<!--<link rel="stylesheet" href="/experiment/3/stylesheets/screen.css"/> there is an issue preventing this exp to work if the css is loaded at the exp level-->
+<!--<script src="/libs/Box2dWeb-2.1.a.3.js"></script>-->
+<!--<script src="/experiment/3/js/MouseAndTouch.js"></script>-->
+<!--<script src="/experiment/3/js/app.js"></script>-->
+<!--<script src="/experiment/3/js/services.js"></script>-->
+<!--<script src="/experiment/3/js/controllers.js"></script>-->
+<!--<script src="/experiment/3/js/filters.js"></script>-->
+<!--<script src="/experiment/3/js/directives.js"></script>-->
+
+<!--pie-menu-d3-->
+<link rel="stylesheet" href="/experiment/pie-menu-d3/stylesheets/screen.css"/>
+<script src="/libs/d3.v2.js"></script>
+<script src="/experiment/pie-menu-d3/js/app.js"></script>
+<script src="/experiment/pie-menu-d3/js/services.js"></script>
+<script src="/experiment/pie-menu-d3/js/controllers.js"></script>
+<script src="/experiment/pie-menu-d3/js/filters.js"></script>
+<script src="/experiment/pie-menu-d3/js/directives.js"></script>
+
+<!--fb-og-d3-->
+<!--<link rel="stylesheet" href="/experiment/fb-og-d3/stylesheets/screen.css"/>-->
+<!--<script src="/libs/d3.v2.js"></script>-->
+<!--<script src="/experiment/fb-og-d3/js/app.js"></script>-->
+<!--<script src="/experiment/fb-og-d3/js/services.js"></script>-->
+<!--<script src="/experiment/fb-og-d3/js/controllers.js"></script>-->
+<!--<script src="/experiment/fb-og-d3/js/filters.js"></script>-->
+<!--<script src="/experiment/fb-og-d3/js/directives.js"></script>-->
+
+
+<script>
+    angular.element(document).ready(function() {
+        angular.bootstrap('#myApp', ['myApp']);
+    });
+</script>
+
+
+</body>
+</html>

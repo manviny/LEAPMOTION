@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="leap">
+<head>
+    <title>Leap JS Practice</title>
+    <script src="http://js.leapmotion.com/0.3.0-beta3/leap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="main.css"/>
+
+</head>
+<body ng-controller="leapCtrl">
+
+    <div class="page-wrapper">
+
+        <h1 class="app-title">Leap Motion Device</h1>
+
+        <div class="not-connected" ng-show="!ready">
+            <h2> Ooppss! It looks like there is no LEAP Motion device pluged-in </h2>
+        </div>
+
+        <div class="connected" ng-show="ready">
+
+            <h2>Device is pluged-in and ready</h2>
+
+            <h3>Hands number : {{hands}}</h3>
+            <h3>Fingers number : {{fingers}}</h3>
+            <h3>Using a tool? : {{tool}}</h3>
+        </div>
+
+
+        <div class="leaplogs">
+
+            <div class="logs">
+                <h3>Device logs</h3>
+                <ul id="logs">
+                    <li ng-repeat="message in messages">{{message.text}}</li>
+                </ul>
+            </div>
+
+            <div class="gestures">
+                <h3>I'm tracking the gestures you are doing</h3>
+                <ul id="gestures">
+                    <li ng-repeat="gesture in gestures">
+                        <strong> Type: </strong> {{gesture.type}} <br>
+                        <strong> Hands: </strong> {{gesture.hands}}<br>
+                        <strong> Pointables on the gesture: </strong> {{gesture.pointables}}
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "angular-leap",
+  "version": "1.0.1",
+  "description": "Easy Usage of LeapMotion with AngularJS",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:angular-leap/angular-leap.git"
+  },
+  "author": {
+    "name": "Robin Böhm"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "karma": "0.10.8",
+    "grunt": "0.4.2",
+    "grunt-contrib-watch": "0.5.3",
+    "grunt-contrib-clean": "0.5.0",
+    "grunt-contrib-concat": "0.3.0",
+    "grunt-ngmin": "0.0.3",
+    "grunt-ngdocs": "0.1.7",
+    "grunt-contrib-uglify": "0.2.7",
+    "grunt-contrib-jshint": "~0.7.2",
+    "load-grunt-tasks": "0.2.0",
+    "grunt-karma": "0.6.2",
+    "grunt-conventional-changelog": "1.0.0"
+  },
+  "scripts": {
+    "test": "grunt ci"
+  }
+}
